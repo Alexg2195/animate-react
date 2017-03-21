@@ -1,0 +1,29 @@
+{
+  "name": "animate-react",
+  "version": "1.0.0",
+  "description": "React Animate Library",
+  "main": "index.js",
+  "scripts": {
+    "dev": "gulp",
+    "test": "webpack --config webpack-test.config.js -w --progress --colors"
+  },
+  "repository": "git@github.com:Alexg2195/animate-react.git",
+  "author": "Alexg2195 <alexg2195@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-core": "^6.24.0",
+    "babel-loader": "^6.4.1",
+    "babel-preset-es2015": "^6.24.0",
+    "babel-preset-react": "^6.23.0",
+    "babel-preset-stage-0": "^6.22.0",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.2",
+    "gulp-livereload": "^3.8.1",
+    "gulp-rename": "^1.2.2",
+    "react-dom": "^15.4.2",
+    "webpack": "^2.2.1"
+  },
+  "dependencies": {
+    "react": "^15.4.2"
+  }
+}
