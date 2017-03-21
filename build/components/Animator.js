@@ -28,7 +28,7 @@ var Animator = function (_React$Component) {
   }
 
   _createClass(Animator, [{
-    key: 'render',
+    key: 'componentWillMount',
 
 
     // constructor() {
@@ -36,11 +36,37 @@ var Animator = function (_React$Component) {
     //
     // }
 
+    value: function componentWillMount() {
+      var animations = this.props.animations;
+
+
+      if (animations) {
+        var styleSheet = document.styleSheets[0];
+        if (!styleSheet) {
+          throw new Error('To use the Animator component you need a linked stylesheet!');
+        }
+
+        animations.forEach(function (animation) {
+          if (typeof animation.name != 'string' || animation.name === '') {
+            throw new TypeError('Expected animation.name to be a non empty string, recevied ' + animation.name + '.');
+          }
+          if (typeof animation.type != 'function') {
+            throw new TypeError('Expected animation.type to be a animation function, recevied ' + animation.type + '.');
+          }
+          animation.type(styleSheet, animation);
+        });
+      }
+    }
+  }, {
+    key: 'render',
     value: function render() {
+      var play = this.props.play;
+
+
       return _react2.default.createElement(
-        'h1',
-        null,
-        'Hello!'
+        'div',
+        { className: play },
+        this.props.children
       );
     }
   }]);
@@ -49,3 +75,9 @@ var Animator = function (_React$Component) {
 }(_react2.default.Component);
 
 exports.default = Animator;
+
+
+Animator.propTypes = {
+  animations: _react2.default.PropTypes.array,
+  play: _react2.default.PropTypes.array
+};
