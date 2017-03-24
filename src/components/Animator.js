@@ -42,5 +42,5 @@ export default class Animator extends React.Component {
 
 Animator.propTypes = {
   animations: React.PropTypes.array,
-  play: React.PropTypes.array
+  play: React.PropTypes.string
 };

@@ -79,5 +79,5 @@ exports.default = Animator;
 
 Animator.propTypes = {
   animations: _react2.default.PropTypes.array,
-  play: _react2.default.PropTypes.array
+  play: _react2.default.PropTypes.string
 };

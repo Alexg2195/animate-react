@@ -13,7 +13,7 @@ module.exports = function(styleSheet, animation) {
   let animationClass =
     `.${animation.name} {
       animation-name: ${animation.name};
-      animation-duration: 4s;
+      animation-duration: ${animation.duration || '4s'};
     }`
 
   styleSheet.insertRule(animationKeyframe, 0)
