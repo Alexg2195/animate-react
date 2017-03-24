@@ -3,7 +3,7 @@
 ## `<Animator></Animator>`
 The Animator component acts as a wrapper for any other UI code you want to add animations to.
 
-##### Example of Animator
+### Example of Animator
 ```
 import { Animator, fadeIn } from 'animate-react'
 
@@ -17,6 +17,36 @@ import { Animator, fadeIn } from 'animate-react'
   ]}
 >
   <h1>MY CODE THAT HAS A NEW AWESOME FADE IN</h1>
+</Animator>
+```
+
+### Animation Scoping
+Using an Animator alone will create global animations
+```
+<Animator animations={[
+  {
+    name: 'initialFadeIn',
+    type: fadeIn,
+    duration: '7s'
+  }
+]} />
+```
+Defining your animations on an Animator that has children will scope that animation to that Animator. If no scoped animation is found it will reference the global animations.
+```
+<Animator play={'initialFadeIn'} animations={[
+  {
+    name: 'initialFadeIn',
+    type: fadeIn,
+    duration: '1s'
+  }
+]}>
+  <h1>Scoped Fade In</h1>
+</Animator>
+```
+Because this Animator does not have a animations prop it will automatically use the global animations from above
+```
+<Animator play='initialFadeIn'>
+  <h1>Global Fade In</h1>
 </Animator>
 ```
 
@@ -52,3 +82,10 @@ import { Animator, fadeIn } from 'animate-react'
 * `npm install` to install all packages needed
 * `npm run dev` to start start build watcher
 * `npm run test` to start build watcher on the testing bundle
+
+### Commit prefix
+
+* Feature - MSG
+* Docs - MSG
+* Fix - MSG
+* Refactor - MSG
