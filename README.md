@@ -21,7 +21,7 @@ import { Animator, fadeIn } from 'animate-react'
 ```
 
 ### Animation Scoping
-Using an Animator alone will create global animations
+Using an Animator alone will create **global** animations.
 ```
 <Animator animations={[
   {
@@ -31,7 +31,7 @@ Using an Animator alone will create global animations
   }
 ]} />
 ```
-Defining your animations on an Animator that has children will scope that animation to that Animator. If no scoped animation is found it will reference the global animations.
+Defining your animations on an Animator that **has children** will scope that animation to that Animator. If no scoped animation is found it will reference the global animations.
 ```
 <Animator play={'initialFadeIn'} animations={[
   {
@@ -43,7 +43,7 @@ Defining your animations on an Animator that has children will scope that animat
   <h1>Scoped Fade In</h1>
 </Animator>
 ```
-Because this Animator does not have a animations prop it will automatically use the global animations from above
+This Animator does not have a animations prop so it will use the global animations like the ones defined from above.
 ```
 <Animator play='initialFadeIn'>
   <h1>Global Fade In</h1>
@@ -57,8 +57,9 @@ Because this Animator does not have a animations prop it will automatically use 
 | play          | STRING                    | Animation to play right now. |
 | animations    | [{ANIMATION_DEFINITION}]  | Array of animation objects. Name and type are required! |
 
+***
 
-### Animation Definition
+## Animation Definition
 
 | Name          | Type            | Default      | Description  |
 |:-------------:|:---------------:|:------------:| ------------ |
@@ -66,14 +67,13 @@ Because this Animator does not have a animations prop it will automatically use 
 | type          | ANIMATION_FN    | N/A REQUIRED | Imported animation type |
 | duration      | STRING          | '4s'         | Duration of animation |
 
-#### NOTE: animation names are written to a CSS stylesheet and are called upon. This means they are not scoped to a component and they need to be unique or else they will be shared and you will have unwanted behavior in your application.
-
 ***
 
 ## Animation Types
 
 ### `fadeIn`
 
+***
 
 ## Development
 
