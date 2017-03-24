@@ -3,13 +3,27 @@ import React from 'react'
 
 export default class Animator extends React.Component {
 
-  // constructor() {
-  //   super()
-  //
-  // }
+  constructor(props) {
+    super()
+    if (props.children && props.animations) {
+      let animations = props.animations
+      animations.forEach((animation, index) => {
+        animations[index].id = `animation-${Math.random().toString().slice(2)}`
+      })
+      this.state = {
+        animations: animations,
+        scopedAnimations: true
+      }
+    } else {
+      this.state = {
+        animations: props.animations,
+        scopedAnimations: false
+      }
+    }
+  }
 
   componentWillMount() {
-    const { animations } = this.props
+    const { animations, scopedAnimations } = this.state
 
     if ( animations ) {
       let styleSheet = document.styleSheets[0]
@@ -31,9 +45,27 @@ export default class Animator extends React.Component {
 
   render() {
     let { play } = this.props
+    let { animations, scopedAnimations } = this.state
+    let animationToPlay = ''
+
+    console.log(animations);
+
+    // Search for scoped animation first
+    if (scopedAnimations && animations) {
+      animations.forEach((animation) => {
+        if (animation.name === play) {
+          animationToPlay = animation.id
+        }
+      })
+    }
+    // If no scoped animation that matches go to globals
+    if (animationToPlay === '') {
+      animationToPlay = play
+    }
+    console.log(animationToPlay);
 
     return (
-      <div className={ play }>
+      <div className={ animationToPlay }>
         { this.props.children }
       </div>
     )

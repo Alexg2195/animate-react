@@ -1,6 +1,8 @@
-module.exports = function(styleSheet, animation) {
+module.exports = (styleSheet, animation) => {
+  let animationName = animation.id || animation.name
+
   let animationKeyframe =
-    `@keyframes ${animation.name} {
+    `@keyframes ${animationName} {
       from {
         opacity: 0;
       }
@@ -11,8 +13,8 @@ module.exports = function(styleSheet, animation) {
     }`
 
   let animationClass =
-    `.${animation.name} {
-      animation-name: ${animation.name};
+    `.${animationName} {
+      animation-name: ${animationName};
       animation-duration: ${animation.duration || '4s'};
     }`
 

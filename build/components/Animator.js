@@ -21,23 +21,35 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var Animator = function (_React$Component) {
   _inherits(Animator, _React$Component);
 
-  function Animator() {
+  function Animator(props) {
     _classCallCheck(this, Animator);
 
-    return _possibleConstructorReturn(this, (Animator.__proto__ || Object.getPrototypeOf(Animator)).apply(this, arguments));
+    var _this = _possibleConstructorReturn(this, (Animator.__proto__ || Object.getPrototypeOf(Animator)).call(this));
+
+    if (props.children && props.animations) {
+      var animations = props.animations;
+      animations.forEach(function (animation, index) {
+        animations[index].id = 'animation-' + Math.random().toString().slice(2);
+      });
+      _this.state = {
+        animations: animations,
+        scopedAnimations: true
+      };
+    } else {
+      _this.state = {
+        animations: props.animations,
+        scopedAnimations: false
+      };
+    }
+    return _this;
   }
 
   _createClass(Animator, [{
     key: 'componentWillMount',
-
-
-    // constructor() {
-    //   super()
-    //
-    // }
-
     value: function componentWillMount() {
-      var animations = this.props.animations;
+      var _state = this.state,
+          animations = _state.animations,
+          scopedAnimations = _state.scopedAnimations;
 
 
       if (animations) {
@@ -61,11 +73,31 @@ var Animator = function (_React$Component) {
     key: 'render',
     value: function render() {
       var play = this.props.play;
+      var _state2 = this.state,
+          animations = _state2.animations,
+          scopedAnimations = _state2.scopedAnimations;
 
+      var animationToPlay = '';
+
+      console.log(animations);
+
+      // Search for scoped animation first
+      if (scopedAnimations && animations) {
+        animations.forEach(function (animation) {
+          if (animation.name === play) {
+            animationToPlay = animation.id;
+          }
+        });
+      }
+      // If no scoped animation that matches go to globals
+      if (animationToPlay === '') {
+        animationToPlay = play;
+      }
+      console.log(animationToPlay);
 
       return _react2.default.createElement(
         'div',
-        { className: play },
+        { className: animationToPlay },
         this.props.children
       );
     }
