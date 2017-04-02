@@ -10,20 +10,22 @@ ReactDOM.render(
       {
         name: 'initialFadeIn',
         type: fadeIn,
-        duration: '7s'
+        duration: '6s'
       }
     ]} />
+
     <Animator play={'initialFadeIn'} animations={[
       {
         name: 'initialFadeIn',
         type: fadeIn,
-        duration: '1s'
+        duration: '1.8s'
       }
     ]}>
-      <h1 style={{top: '50%', left: '30%', position: 'fixed', transform: 'translate(-50%,-50%)', color: 'white'}}>FADE IN!</h1>
+      <h1 style={{top: '50%', left: '30%', position: 'fixed', transform: 'translate(-50%,-50%)', color: 'white'}}>Scoped Fade In</h1>
     </Animator>
+
     <Animator play='initialFadeIn'>
-      <h1 style={{top: '50%', left: '70%', position: 'fixed', transform: 'translate(-50%,-50%)', color: 'white'}}>Global Fade in</h1>
+      <h1 style={{top: '50%', left: '70%', position: 'fixed', transform: 'translate(-50%,-50%)', color: 'white'}}>Global Fade In</h1>
     </Animator>
   </div>
 ,document.getElementById('app'))

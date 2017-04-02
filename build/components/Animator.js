@@ -79,8 +79,6 @@ var Animator = function (_React$Component) {
 
       var animationToPlay = '';
 
-      console.log(animations);
-
       // Search for scoped animation first
       if (scopedAnimations && animations) {
         animations.forEach(function (animation) {
@@ -93,7 +91,6 @@ var Animator = function (_React$Component) {
       if (animationToPlay === '') {
         animationToPlay = play;
       }
-      console.log(animationToPlay);
 
       return _react2.default.createElement(
         'div',

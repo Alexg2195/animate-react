@@ -48,8 +48,6 @@ export default class Animator extends React.Component {
     let { animations, scopedAnimations } = this.state
     let animationToPlay = ''
 
-    console.log(animations);
-
     // Search for scoped animation first
     if (scopedAnimations && animations) {
       animations.forEach((animation) => {
@@ -62,7 +60,6 @@ export default class Animator extends React.Component {
     if (animationToPlay === '') {
       animationToPlay = play
     }
-    console.log(animationToPlay);
 
     return (
       <div className={ animationToPlay }>
